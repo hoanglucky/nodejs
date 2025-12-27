@@ -4,9 +4,10 @@
   "description": "nodejs_pro_hoidanit",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test\" && exit 1",
     "start": "nodemon",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "start:debug": "nodemon --inspect=9229 -e ts,tsx --exec node -r ts-node/register ./src/app.ts"
   },
   "nodemonConfig": {
     "watch": [
@@ -14,9 +15,10 @@
     ],
     "ext": "ts",
     "ignore": [
-      "node_modules"
+      "node_modules",
+      "dist"
     ],
-    "exec": "ts-node ./src/app.ts"
+    "exec": "node --require ts-node/register src/app.ts"
   },
   "keywords": [
     "nodejs",

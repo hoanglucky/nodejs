@@ -7,10 +7,18 @@ const port = process.env.PORT || 8080;
 // config view engine
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
-// config router
-webRoutes(app);
+
+//config req.body
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
+
 // config static file
 app.use(express.static('public'));
+
+// config router
+webRoutes(app);
 
 
 app.listen(port, () => {
