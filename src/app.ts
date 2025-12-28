@@ -2,6 +2,7 @@
 import express from 'express';
 import 'dotenv/config'
 import webRoutes from './routers/web'
+import getConnection from 'config/database';
 const app = express();
 const port = process.env.PORT || 8080;
 // config view engine
@@ -19,7 +20,6 @@ app.use(express.static('public'));
 
 // config router
 webRoutes(app);
-
 
 app.listen(port, () => {
     console.log(`Server start at port: ${port}`)
