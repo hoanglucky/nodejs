@@ -3,6 +3,7 @@ import express from 'express';
 import 'dotenv/config'
 import webRoutes from './routers/web'
 import getConnection from 'config/database';
+import initDatabase from 'config/seed';
 const app = express();
 const port = process.env.PORT || 8080;
 // config view engine
@@ -20,6 +21,8 @@ app.use(express.static('public'));
 
 // config router
 webRoutes(app);
+// seeding data
+initDatabase();
 
 app.listen(port, () => {
     console.log(`Server start at port: ${port}`)
